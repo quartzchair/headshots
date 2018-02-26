@@ -19,8 +19,7 @@ class Mom {
   isSheWorriedSick() {
     // if this.isSheProud() return false
     return this.worry >= 90 ? true : false
-  
-
+  }
 }
 
 export default Mom

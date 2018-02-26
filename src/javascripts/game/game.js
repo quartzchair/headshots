@@ -20,9 +20,9 @@ class Game {
     // needs a `Calendar` to add a time aspect
       // - allows time to pass, which affects player's bank account negatively
       // - forces player to age, affecting public image
-
     var calendar = new Calendar()
     calendar.getDate()
+    
     // needs a `BankAccount` to keep you from having to get a real job
       // - needs to go up when you get a role
         // amount of money depends on whether player gets A,B or C role
