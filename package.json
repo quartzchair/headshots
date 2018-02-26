@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./src/javascripts/app.js",
   "license": "MIT",
+  "repository": "https://github.com/benjtinsley/headshots.git",
   "dependencies": {
     "blendid": "^4.4.3",
     "createjs": "^1.0.1"

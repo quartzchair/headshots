@@ -1,10 +1,10 @@
 class PublicImage {
   constructor() {
     console.log('PublicImage called')
-    // your likeability allows you to get roles that fall outside your typical characteristics
+    // your likeability allows you to get roles that fall outside your characteristics
     this.likeability = 1
+    // as fame gets higher, it becomes harder to change your characteristics
     this.fame = 1
-    // as fame gets higher, it becomes harder to change the following characteristics
     this.characteristics = {
       'energetic': 1,
       'earnestness': 1,

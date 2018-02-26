@@ -8,7 +8,6 @@ class Calendar {
   }
 
   getDate() {
-    console.log(this.allMonths[this.month], this.year)
     return `${this.allMonths[this.month]}, ${this.year}`
   }
 
