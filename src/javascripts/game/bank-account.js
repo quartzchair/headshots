@@ -4,7 +4,6 @@ class BankAccount {
   constructor() {
     this.protagonist = new Protagonist()
     this.balance = 4500
-    this.expenses = this.calculateExpenses()
   }
 
   calculateExpenses() {
@@ -22,7 +21,8 @@ class BankAccount {
   }
 
   payBills() {
-    this.balance = this.balance - this.expenses
+    var expenses = this.calculateExpenses()
+    this.balance = this.balance - expenses
   }
 
   getBalance() {

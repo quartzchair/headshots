@@ -8,6 +8,7 @@ class Mom {
     // if Mom is worried, she will call more frequently, making it more
     // difficult for your agent to reach you
     this.worry = Math.ceil(Math.random()*100)
+    this.moneyToGive = 4500
 
     console.log(this.disappointment, this.isSheProud(), this.worry, this.isSheWorriedSick())
   }
@@ -19,6 +20,14 @@ class Mom {
   isSheWorriedSick() {
     // if this.isSheProud() return false
     return this.worry >= 90 ? true : false
+  }
+
+  changeDisappointment(delta) {
+    this.disappointment = this.disappointment + delta
+  }
+
+  changeWorry(delta) {
+    this.worry = this.worry + delta
   }
 }
 

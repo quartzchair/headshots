@@ -22,7 +22,7 @@ class Game {
       // - forces player to age, affecting public image
     var calendar = new Calendar()
     calendar.getDate()
-    
+
     // needs a `BankAccount` to keep you from having to get a real job
       // - needs to go up when you get a role
         // amount of money depends on whether player gets A,B or C role
@@ -43,7 +43,7 @@ class Game {
 
     // needs `Phone` so that `Mom` and `YourAgent` can call you and so you can call others
     var phone = new Phone()
-
+    
     // needs a `Headshot` to make and save your picture
       // - needs a timer to set a time limit
       // - needs keypress event listeners to control different facial features

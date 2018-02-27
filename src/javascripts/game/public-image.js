@@ -7,7 +7,7 @@ class PublicImage {
     this.fame = 1
     this.characteristics = {
       'energetic': 1,
-      'earnestness': 1,
+      'earnest': 1,
       'profane': 1,
       'absurd': 1,
       'wise': 1,
