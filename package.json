@@ -1,7 +1,7 @@
 {
   "name": "working-up",
   "version": "1.0.0",
-  "main": "./src/javascripts/app.js",
+  "main": "./src/js/app.js",
   "license": "MIT",
   "repository": "https://github.com/benjtinsley/headshots.git",
   "dependencies": {
