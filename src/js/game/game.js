@@ -43,7 +43,7 @@ class Game {
 
     // needs `Phone` so that `Mom` and `YourAgent` can call you and so you can call others
     var phone = new Phone()
-    
+    phone.recieveCall()
     // needs a `Headshot` to make and save your picture
       // - needs a timer to set a time limit
       // - needs keypress event listeners to control different facial features

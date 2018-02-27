@@ -1,3 +1,4 @@
+import RandomNumber from '../util/random-number'
 import Mom from './mom'
 import YourAgent from './your-agent'
 import Calendar from './calendar'
@@ -12,6 +13,35 @@ class Phone {
     this.bankAccount = new BankAccount()
   }
 
+  recieveCall() {
+    var incomingAgentOpportunity = this.isYourAgentCalling()
+    var incomingMomCall = this.isMomCalling()
+
+    if (incomingMomCall) {
+      // mom takes precedence no matter what, even if your agent is trying
+      // to reach you
+      console.log('===== mom called =====')
+    } else if (incomingAgentOpportunity && !this.yourAgent.isWaitingForCallback) {
+      // you have a new lead!
+      console.log('===== you have a new lead! =====')
+      this.yourAgent.isWaitingForCallback = false
+    } else if (incomingAgentOpportunity && this.yourAgent.isWaitingForCallback) {
+      // you got the part!
+      console.log('===== you got the part! =====')
+    } else {
+      console.log('===== nothing happens =====')
+      // nothing happens
+    }
+  }
+
+  isMomCalling() {
+    return  this.mom.worry >= RandomNumber(1, 100) ? true : false
+  }
+
+  isYourAgentCalling() {
+    return  this.yourAgent.effectiveness >= RandomNumber(1, 100) ? true : false
+  }
+
   callMom() {
    /*  callMom will allow player to have her pay next month's expenses at
     *  the cost of making her more worried and disappointed. if she cant afford
@@ -20,7 +50,7 @@ class Phone {
     */
     var upcomingExpenses = this.bankAccount.calculateExpenses()
 
-    if ( this.mom.disappointment < 90
+    if ( !this.mom.isSheAtATippingPoint()
         && this.bankAccount.balance < upcomingExpenses
         && this.mom.moneyToGive > upcomingExpenses ) {
       this.bankAccount.balance = this.bankAccount.balance + upcomingExpenses
@@ -42,6 +72,9 @@ class Phone {
    /* callAgent will allow player to call agent to see if there are any jobs
     * s/he forgot to mention, as well as fire agent
     */
+    if (this.yourAgent.isWaitingForCallback) {
+      // oh yea, i forgot to tell you - you got the part!
+    }
   }
 }
 
