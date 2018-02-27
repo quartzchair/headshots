@@ -74,6 +74,8 @@ class Phone {
     */
     if (this.yourAgent.isWaitingForCallback) {
       // oh yea, i forgot to tell you - you got the part!
+    } else {
+      // sorry no new leads in the pipeline!
     }
   }
 }
