@@ -1,4 +1,4 @@
-import RandomNumber from '../util/random-number'
+import {randomNumber} from '../util/random-number'
 import Phone from './phone'
 import PublicImage from './public-image'
 
@@ -7,10 +7,10 @@ class Mom {
     console.log('Mom called')
     // if Mom is disappointed, she will lower your self worth or refuse to give
     // you money
-    this.disappointment = RandomNumber(25, 75)
+    this.disappointment = randomNumber(25, 75)
     // if Mom is worried, she will call more frequently, making it more
     // difficult for your agent to reach you
-    this.worry = RandomNumber(10, 40)
+    this.worry = randomNumber(10, 40)
     this.moneyToGive = 4500
 
     console.log(`Mom starting disappointment: ${this.disappointment}`)

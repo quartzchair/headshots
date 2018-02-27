@@ -1,16 +1,6 @@
-import RandomNumber from '../util/random-number'
-import Mom from './mom'
-import YourAgent from './your-agent'
-import Calendar from './calendar'
-import BankAccount from './bank-account'
-
 class Phone {
   constructor() {
     console.log('Phone called')
-    this.calendar = new Calendar()
-    this.mom = new Mom()
-    this.yourAgent = new YourAgent()
-    this.bankAccount = new BankAccount()
   }
 
   recieveCall() {
@@ -35,11 +25,11 @@ class Phone {
   }
 
   isMomCalling() {
-    return  this.mom.worry >= RandomNumber(1, 100) ? true : false
+    return  this.mom.worry >= randomNumber(1, 100) ? true : false
   }
 
   isYourAgentCalling() {
-    return  this.yourAgent.effectiveness >= RandomNumber(1, 100) ? true : false
+    return  this.yourAgent.effectiveness >= randomNumber(1, 100) ? true : false
   }
 
   callMom() {
