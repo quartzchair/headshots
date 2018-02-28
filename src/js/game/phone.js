@@ -1,36 +1,57 @@
+import {randomNumber} from '../util/random-number'
+
 class Phone {
-  constructor() {
+  constructor({calendar, yourMom, yourAgent, bankAccount}) {
     console.log('Phone called')
+    this.calendar = calendar
+    this.yourMom = yourMom
+    this.yourAgent = yourAgent
+    this.bankAccount = bankAccount
   }
 
-  recieveCall() {
+  receiveCall() {
     var incomingAgentOpportunity = this.isYourAgentCalling()
+    var incomingAgentCallback = this.isYourAgentCallingBack()
     var incomingMomCall = this.isMomCalling()
 
     if (incomingMomCall) {
       // mom takes precedence no matter what, even if your agent is trying
       // to reach you
-      console.log('===== mom called =====')
+      console.log('==> mom called <==')
+      if (incomingAgentOpportunity) {
+        console.log('==> ...and you missed a call from your agent <==')
+        if (this.yourAgent.isWaitingForCallback) {
+          console.log('==> ...and it was a callback for the part! oh no! <==')
+          this.yourAgent.isWaitingForCallback = false
+        }
+      }
     } else if (incomingAgentOpportunity && !this.yourAgent.isWaitingForCallback) {
       // you have a new lead!
-      console.log('===== you have a new lead! =====')
-      this.yourAgent.isWaitingForCallback = false
+      console.log('==> your agent called and you have a new lead! <==')
+      this.yourAgent.isWaitingForCallback = true
     } else if (incomingAgentOpportunity && this.yourAgent.isWaitingForCallback) {
       // you got the part!
-      console.log('===== you got the part! =====')
+      console.log('==> your agent called and you got the part! <==')
+      this.yourAgent.isWaitingForCallback = false
     } else {
-      console.log('===== nothing happens =====')
+      console.log('==> no calls today <==')
       // nothing happens
     }
   }
 
+
   isMomCalling() {
-    return  this.mom.worry >= randomNumber(1, 100) ? true : false
+    return  this.yourMom.worry >= randomNumber(1, 100) ? true : false
   }
 
   isYourAgentCalling() {
     return  this.yourAgent.effectiveness >= randomNumber(1, 100) ? true : false
   }
+
+  isYourAgentCallingBack() {
+    return  this.yourAgent.effectiveness * this.yourAgent.haste >= randomNumber(1, 100) ? true : false
+  }
+
 
   callMom() {
    /*  callMom will allow player to have her pay next month's expenses at
@@ -40,21 +61,24 @@ class Phone {
     */
     var upcomingExpenses = this.bankAccount.calculateExpenses()
 
-    if ( !this.mom.isSheAtATippingPoint()
-        && this.bankAccount.balance < upcomingExpenses
-        && this.mom.moneyToGive > upcomingExpenses ) {
+    if ( !this.yourMom.isSheAtATippingPoint() &&
+        this.bankAccount.balance < upcomingExpenses &&
+        this.bankAccount.momsBalance > upcomingExpenses ) {
       this.bankAccount.balance = this.bankAccount.balance + upcomingExpenses
-      this.mom.disappointment = this.mom.disappointment + 10
-      this.mom.worry = this.mom.worry + 10
-      this.mom.moneyToGive = this.mom.moneyToGive - upcomingExpenses
+      this.yourMom.disappointment = this.yourMom.disappointment + 10
+      this.yourMom.worry = this.yourMom.worry + 10
+      this.bankAccount.momsBalance = this.bankAccount.momsBalance - upcomingExpenses
+
     } else if ( this.bankAccount.balance >= upcomingExpenses ){
-      this.mom.worry = this.mom.worry - 2
-      this.mom.disappointment = this.mom.disappointment + 2
-    } else if ( this.mom.moneyToGive <= upcomingExpenses ) {
-      this.mom.disappointment = this.mom.disappointment + 20
-      this.mom.worry = this.mom.worry + 20
+      this.yourMom.worry = this.yourMom.worry - 2
+      this.yourMom.disappointment = this.yourMom.disappointment + 2
+
+    } else if ( this.bankAccount.momsBalance <= upcomingExpenses ) {
+      this.yourMom.disappointment = this.yourMom.disappointment + 20
+      this.yourMom.worry = this.yourMom.worry + 20
+
     } else {
-      this.mom.worry = this.mom.worry + 20
+      this.yourMom.worry = this.yourMom.worry + 20
     }
   }
 
@@ -64,8 +88,6 @@ class Phone {
     */
     if (this.yourAgent.isWaitingForCallback) {
       // oh yea, i forgot to tell you - you got the part!
-    } else {
-      // sorry no new leads in the pipeline!
     }
   }
 }

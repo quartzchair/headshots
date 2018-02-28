@@ -4,6 +4,7 @@ class BankAccount {
   constructor() {
     this.protagonist = new Protagonist()
     this.balance = 4500
+    this.momsBalance = 4500
   }
 
   calculateExpenses() {
