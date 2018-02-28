@@ -15,7 +15,7 @@ class Game {
 
     this.canvas = document.getElementById('game-canvas')
     this.initializeComponents()
-    // this.playADemoYear()
+    this.playADemoYear()
   }
 
   initializeComponents() {

@@ -18,6 +18,7 @@ class Phone {
       // mom takes precedence no matter what, even if your agent is trying
       // to reach you
       console.log('==> mom called <==')
+      this.yourMom.constructConversation()
       if (incomingAgentOpportunity) {
         console.log('==> ...and you missed a call from your agent <==')
         if (this.yourAgent.isWaitingForCallback) {
@@ -31,7 +32,7 @@ class Phone {
       this.yourAgent.isWaitingForCallback = true
     } else if (incomingAgentOpportunity && this.yourAgent.isWaitingForCallback) {
       // you got the part!
-      console.log('==> your agent called and you got the part! <==')
+      console.log('==> your agent called back and you got the part! payday! <==')
       this.yourAgent.isWaitingForCallback = false
     } else {
       console.log('==> no calls today <==')

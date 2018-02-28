@@ -4,7 +4,7 @@ class Calendar {
     var today = new Date()
     this.month = today.getMonth()
     this.year = today.getFullYear()
-    this.daysInMonth = 1
+    this.daysInMonth = 12
     this.allMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   }
 

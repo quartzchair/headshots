@@ -1,4 +1,5 @@
 import {randomNumber} from '../util/random-number'
+import YourMomsTalkingPoints from './your-moms-talking-points'
 
 class YourMom {
   constructor({publicImage}) {
@@ -9,7 +10,6 @@ class YourMom {
     // if YourMom is worried, she will call more frequently, making it more
     // difficult for your agent to reach you
     this.worry = randomNumber(10, 30)
-
     this.publicImage = publicImage
     console.log(`YourMom starting disappointment: ${this.disappointment}`)
     console.log(`YourMom starting worry: ${this.worry}`)
@@ -39,6 +39,13 @@ class YourMom {
 
   changeWorry(delta) {
     this.worry = this.worry + delta
+  }
+
+  constructConversation() {
+    // will need a conversation on a slide, where if mom is more disappointed
+    // or worried, she will say more cutting/panicky things
+    var conversation = `${YourMomsTalkingPoints.intro[Math.floor(Math.random()*YourMomsTalkingPoints.intro.length)]} ${YourMomsTalkingPoints.request[Math.floor(Math.random()*YourMomsTalkingPoints.request.length)]} ${YourMomsTalkingPoints.emphasis[Math.floor(Math.random()*YourMomsTalkingPoints.emphasis.length)]} ${YourMomsTalkingPoints.conclusion[Math.floor(Math.random()*YourMomsTalkingPoints.conclusion.length)]}`
+    console.log(conversation)
   }
 }
 
