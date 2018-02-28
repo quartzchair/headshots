@@ -29,6 +29,7 @@ class Phone {
     } else if (incomingAgentOpportunity && !this.yourAgent.isWaitingForCallback) {
       // you have a new lead!
       console.log('==> your agent called and you have a new lead! <==')
+      this.yourAgent.findALead()
       this.yourAgent.isWaitingForCallback = true
     } else if (incomingAgentOpportunity && this.yourAgent.isWaitingForCallback) {
       // you got the part!
