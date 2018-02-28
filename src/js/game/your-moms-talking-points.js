@@ -18,7 +18,7 @@ var YourMomsTalkingPoints = {
     "I just don't know what to tell people when they ask what you are doing!",
     "Is this really what you thought you would do with a marketing degree?",
     "...Are you still there?",
-    "When do you think you will be home next?"
+    "Annie Wilkins, who was a year or two younger than you just graduated from med school. Her mother is so proud."
   ],
   "conclusion": [
     "Well, I hope you have something better to tell me the next time we talk.",
